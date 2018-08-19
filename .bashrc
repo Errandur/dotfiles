@@ -1,4 +1,4 @@
-Basic Setup
+#	Basic Setup
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"; 
@@ -133,11 +133,10 @@ alias reload="exec ${SHELL} -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 ####################################
-	Backups       
+#	Backups       
 ####################################
 alias backup='~/backup/backup.sh'
 alias backupk='~/backup/kodora.sh'
-#!/usr/bin/env bash
 
 prompt_git() {
 	local s='';
@@ -235,7 +234,7 @@ else
 fi;
 
 ########################################
-	Set PS1
+#	Set PS1
 ########################################
 # Set the terminal title and prompt.
 # PS1="\[\033]0;\W\007\]"; # working directory base name
