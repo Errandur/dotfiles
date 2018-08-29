@@ -44,6 +44,8 @@ alias power='shutdown now'
 alias updatedot='cd ~/dotfiles; git add .; git commit -m "Updated via Alias"; git push'
 #Fedora ONLY!
 alias install="sudo dnf -y install"
+alias power='shutdown now'
+alias sleep='systemctl suspend'
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -185,7 +187,7 @@ else
 fi;
 # Set the terminal title and prompt.
 # PS1="\[\033]0;\W\007\]"; # working directory base name
-PS1="\[${green}\]┌[\[${userStyle}\]\u";
+PS1="\n\[${green}\]┌[\[${userStyle}\]\u";
 PS1+="\[${white}\]@\[$(tput setaf 45)\]\h";
 PS1+="\[${green}\]]";
 PS1+="\[${orange}\][\w]\n\[${green}\]└╼  ";
