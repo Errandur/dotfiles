@@ -42,6 +42,8 @@ alias gl="git pull"
 alias gs="git push"
 alias power='shutdown now'
 alias updatedot='cd ~/dotfiles; git add .; git commit -m "Updated via Alias"; git push'
+#Fedora ONLY!
+alias install="sudo dnf -y install"
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
