@@ -41,6 +41,7 @@ alias gc="git commit -m 'DEFAULT'"
 alias gl="git pull"
 alias gs="git push"
 alias power='shutdown now'
+alias updatedot='cd ~/dotfiles; git add .; git commit -m "Updated via Alias"; git push'
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
