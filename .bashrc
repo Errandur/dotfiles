@@ -1,5 +1,7 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
+# Export Editor
+export EDITOR=vim
 # Auto CD
 shopt -s autocd
 # Case-insensitive globbing (used in pathname expansion)
