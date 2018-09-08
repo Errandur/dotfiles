@@ -68,6 +68,10 @@ alias ls="command ls ${colorflag}"
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+
+# Funtions 
+cs(){ cd "$@" && ls -lh; }
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "${method}"="lwp-request -m '${method}'"
