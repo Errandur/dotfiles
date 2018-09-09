@@ -67,7 +67,7 @@ alias ls="command ls ${colorflag}"
 # Always enable colored `grep` output
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-alias update='dnf -y update; apt -y update && apt -y upgrade'
+alias update='apt -y update && apt -y upgrade'
 
 # Funtions 
 cs(){ cd "$@" && ls -lh; }
