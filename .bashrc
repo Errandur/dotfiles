@@ -45,7 +45,7 @@ alias gs="git push"
 alias power='shutdown now'
 alias updatedot='cd ~/dotfiles; git add .; git commit -m "Updated via Alias"; git push'
 #Fedora ONLY!
-alias install="sudo dnf -y install"
+alias install="sudo apt -y install"
 alias power='shutdown now'
 alias sleep='systemctl suspend'
 # Detect which `ls` flavor is in use
