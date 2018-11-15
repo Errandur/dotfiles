@@ -45,7 +45,6 @@ alias gs="git push"
 alias power='shutdown now'
 alias updatedot='cd ~/dotfiles; git add .; git commit -m "Updated via Alias"; git push'
 alias open='xdg-open'
-#Fedora ONLY!
 alias install="sudo apt -y install"
 alias power='shutdown now'
 alias sleep='systemctl suspend'
@@ -67,7 +66,7 @@ alias ll="ls -alh ${colorflag}"
 alias ls="command ls ${colorflag}"
 # Always enable colored `grep` output
 # Enable aliases to be sudo’ed
-lias sudo='sudo '
+alias sudo='sudo '
 alias update='sudo apt -y update && sudo apt -y upgrade'
 
 # Funtions 
