@@ -31,6 +31,5 @@ sudo apt install -y tmux
 
 ### Set new Tmux config ###
 ###########################
-sudo touch ~/.tmux.conf
-&& echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
+echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
 
