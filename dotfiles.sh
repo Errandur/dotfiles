@@ -6,12 +6,12 @@ sudo apt -y update && sudo apt -y install git
 
 ### Clone repo ###
 ##################
-git clone https://github.com/errandur/dotfiles
+git clone https://github.com/errandur/dotfiles 
 
 ### Source new bashrc ###
 #########################
-&& echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
-&& source ~/.bashrc
+echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
+source ~/.bashrc
 
 ### Install ranger ###
 ######################
