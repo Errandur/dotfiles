@@ -11,7 +11,6 @@ git clone https://github.com/errandur/dotfiles
 ### Source new bashrc ###
 #########################
 echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
-source ~/.bashrc
 
 ### Install ranger ###
 ######################
@@ -33,9 +32,5 @@ sudo apt install -y tmux
 ###########################
 echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
 
-### Re-source .bashrc ###
-#########################
-source ~/.bashrc
-
-echo Setup Complete!
-####################
+echo Setup Complete! Please Re-Launch Terminal!
+###############################################
