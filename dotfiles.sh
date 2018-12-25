@@ -11,6 +11,7 @@ git clone https://github.com/errandur/dotfiles
 ### Source new bashrc ###
 #########################
 echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
+source ~/.bashrc
 
 ### Install ranger ###
 ######################
