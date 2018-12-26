@@ -1,45 +1,37 @@
 #! /bin/bash
 
-##################################
-### Update APT and install GIT ###
-##################################
+### UPDATE APT & INSTALL GIT ###
 sudo apt -y update && sudo apt -y install git
+  
+### CLONE REPO ###
+if [ ! -d ~/dotfiles ]; then
+	cloneGit
+fi
 
-##################
-### Clone repo ###
-git clone https://github.com/errandur/dotfiles 
-
-#########################
-### Source new bashrc ###
-#########################
+### RESOURCE BASHRC ###
 echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
 
-######################
-### Install ranger ###
-######################
+### INSTALL RANGER ###
 sudo apt install -y ranger
 
-################################
-### Copy ranger config files ###
-################################
-ranger --copy-config=all
+### COPY RANGER CONFIG FILES ###
+if [ ! -d ~/.config/ranger ]; then
+  ranger --copy-config=all
+fi
 
-#############################
-### Set new Ranger config ###
-#############################
+### RESOURCE RANGER CONFIG ###
 sudo echo 'source ~/dotfiles/rc.conf' > ~/.config/ranger/rc.conf
 
-####################
-### Install Tmux ###
-####################
+### INSTALL TMUX ###
 sudo apt install -y tmux
 
-###########################
-### Set new Tmux config ###
-###########################
+### RESOURCE TMUX CONFIG ###
 echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
 
-##########################
-### Completion Message ###
-echo Setup Complete! Please Re-Launch Terminal!
-##########################
+### COMPLETION MESSAGE ###
+echo "Setup Complete! Reload Terminal!"
+
+### FUNCTIONS
+cloneGit() {
+  git clone https://github.com/errandur/dotfiles 
+}
