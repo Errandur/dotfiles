@@ -14,19 +14,19 @@ function copyRangerConfig() {
 }
 
 function updateSkip() {
-	yellow=$'\e[1;33m'
-	PS3="${yellow}Select Option: \[${reset}\]"
+	caution=$'\e[1;33m'
+	reset=$'\e[0m'
+	PS3="${caution}Select Option: ${reset}" 	
 	options=(Update Skip)
 	select opt in "${options[@]}"
 	do
 		case $opt in
 		Update)
-		    sudo rm -rf ~/dotfiles/
-		    cloneGit ;;
+			echo Testing ;;
 		Skip)
-		    break ;;
+			break ;;
 		*) echo "invalid option $REPLY";;
-    		esac
+		esac
 	done
 }
 
