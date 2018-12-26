@@ -19,9 +19,6 @@ if [ ! -d ~/.config/ranger ]; then
   copyRangerConfig
 fi
 
-### RESOURCE RANGER CONFIG ###
-sudo echo 'source ~/dotfiles/rc.conf' > ~/.config/ranger/rc.conf
-
 ### INSTALL TMUX ###
 sudo apt install -y tmux
 
@@ -29,7 +26,7 @@ sudo apt install -y tmux
 echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
 
 ### COMPLETION MESSAGE ###
-echo "Setup Complete! Reload Terminal!"
+echo "SETUP COMPLETE! PLEASE RELAUNCH TERMINAL!"
 
 ### FUNCTIONS
 cloneGit() {
@@ -38,4 +35,5 @@ cloneGit() {
 
 copyRangerConfig() {
   ranger --copy-config=all 
+  sudo echo 'source ~/dotfiles/rc.conf' > ~/.config/ranger/rc.conf
 }
