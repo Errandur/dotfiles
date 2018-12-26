@@ -8,9 +8,9 @@ sudo apt -y update && sudo apt -y install git
   
 ### CLONE REPO ###
 if [ ! -d ~/dotfiles ]; then
-	cloneGit
+	cloneGit;
   else
-  	gitOption
+  	gitOption;
 fi
 
 ### RESOURCE BASHRC ###
@@ -21,7 +21,7 @@ sudo apt install -y ranger
 
 ### COPY RANGER CONFIG FILES ###
 if [ ! -d ~/.config/ranger ]; then
-	copyRangerConfig
+	copyRangerConfig;
 fi
 
 ### INSTALL TMUX ###
