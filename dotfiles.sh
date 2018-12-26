@@ -8,9 +8,9 @@ sudo apt -y update && sudo apt -y install git
   
 ### CLONE REPO ###
 if [ ! -d ~/dotfiles ]; then
-	cloneGit;
+	cloneGit
   else
-  	gitOption;
+  	gitOption
 fi
 
 ### RESOURCE BASHRC ###
