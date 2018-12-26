@@ -14,7 +14,7 @@ function copyRangerConfig() {
 }
 
 function updateSkip() {
-	yellow = $\e[1;33m'
+	yellow=$'\e[1;33m'
 	PS3="${yellow} Select Option: "
 	options=(Update Skip)
 	select opt in "${options[@]}"
