@@ -3,6 +3,32 @@
 ### VARIABLES ###
 GITURL="https://github.com/errandur/dotfiles"
 
+### FUNCTIONS ###
+function cloneGit() {
+	git clone $GITURL 
+}
+
+function copyRangerConfig() {
+	ranger --copy-config=all 
+	sudo echo 'source ~/dotfiles/rc.conf' > ~/.config/ranger/rc.conf
+}
+
+function options() {
+	PS3='Select Option: '
+	options=(Update Skip)
+	select opt in "${options[@]}"
+	do
+		case $opt in
+		Update)
+		    sudo rm -rf ~/dotfiles/
+		    cloneGit ;;
+		Skip)
+		    break ;;
+		*) echo "invalid option $REPLY";;
+    		esac
+	done
+}
+
 ### UPDATE APT & INSTALL GIT ###
 sudo apt -y update && sudo apt -y install git
   
@@ -10,7 +36,7 @@ sudo apt -y update && sudo apt -y install git
 if [ ! -d ~/dotfiles ]; then
 	cloneGit;
   else
-  	gitOption;
+  	options;
 fi
 
 ### RESOURCE BASHRC ###
@@ -32,29 +58,3 @@ echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
 
 ### COMPLETION MESSAGE ###
 echo "SETUP COMPLETE! PLEASE RELAUNCH TERMINAL!"
-
-### FUNCTIONS ###
-function cloneGit() {
-	git clone $GITURL 
-}
-
-function copyRangerConfig() {
-	ranger --copy-config=all 
-	sudo echo 'source ~/dotfiles/rc.conf' > ~/.config/ranger/rc.conf
-}
-
-function gitOption() {
-	PS3='Select Option: '
-	options=(Update Skip)
-	select opt in "${options[@]}"
-	do
-		case $opt in
-		Update)
-		    sudo rm -rf ~/dotfiles/
-		    cloneGit ;;
-		Skip)
-		    break ;;
-		*) echo "invalid option $REPLY";;
-    		esac
-	done
-}
