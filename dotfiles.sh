@@ -10,7 +10,7 @@ function cloneGit() {
 
 function copyRangerConfig() {
 	ranger --copy-config=all 
-	sudo echo 'source ~/dotfiles/rc.conf' > ~/.config/ranger/rc.conf
+	sudo echo "source ~/dotfiles/rc.conf" > ~/.config/ranger/rc.conf
 }
 
 function updateSkip() {
@@ -41,7 +41,7 @@ if [ ! -d ~/dotfiles ]; then
 fi
 
 ### RESOURCE BASHRC ###
-echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
+echo "source ~/dotfiles/.bashrc" > ~/.bashrc
 
 ### INSTALL RANGER ###
 sudo apt install -y ranger
@@ -55,7 +55,7 @@ fi
 sudo apt install -y tmux
 
 ### RESOURCE TMUX CONFIG ###
-echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
+echo "source ~/dotfiles/.tmux.conf" > ~/.tmux.conf
 
 ### COMPLETION MESSAGE ###
 clear
