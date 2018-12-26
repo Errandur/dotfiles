@@ -13,7 +13,7 @@ function copyRangerConfig() {
 	sudo echo 'source ~/dotfiles/rc.conf' > ~/.config/ranger/rc.conf
 }
 
-function options() {
+function updateSkip() {
 	PS3='Select Option: '
 	options=(Update Skip)
 	select opt in "${options[@]}"
@@ -36,7 +36,7 @@ sudo apt -y update && sudo apt -y install git
 if [ ! -d ~/dotfiles ]; then
 	cloneGit;
   else
-  	options;
+  	updateSkip;
 fi
 
 ### RESOURCE BASHRC ###
