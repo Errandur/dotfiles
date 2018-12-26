@@ -16,7 +16,7 @@ sudo apt install -y ranger
 
 ### COPY RANGER CONFIG FILES ###
 if [ ! -d ~/.config/ranger ]; then
-  ranger --copy-config=all
+  copyRangerConfig
 fi
 
 ### RESOURCE RANGER CONFIG ###
@@ -34,4 +34,8 @@ echo "Setup Complete! Reload Terminal!"
 ### FUNCTIONS
 cloneGit() {
   git clone https://github.com/errandur/dotfiles 
+}
+
+copyRangerConfig() {
+  ranger --copy-config=all 
 }
