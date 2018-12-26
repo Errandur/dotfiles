@@ -57,4 +57,5 @@ sudo apt install -y tmux
 echo 'source ~/dotfiles/.tmux.conf' > ~/.tmux.conf
 
 ### COMPLETION MESSAGE ###
+clear
 echo "SETUP COMPLETE! PLEASE RELAUNCH TERMINAL!"
