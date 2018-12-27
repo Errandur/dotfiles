@@ -22,10 +22,14 @@ function updateSkip() {
 	do
 		case $opt in
 		Update)
-			echo Testing ;;
+			rm -rf ~/dotfiles/
+			cloneGit
+		;;
 		Skip)
-			break ;;
-		*) echo "invalid option $REPLY";;
+			break 
+		;;
+		*) echo "invalid option $REPLY"
+		;;
 		esac
 	done
 }
