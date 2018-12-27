@@ -24,6 +24,7 @@ function updateSkip() {
 		Update)
 			rm -rf ~/dotfiles/
 			cloneGit
+			break
 		;;
 		Skip)
 			break 
