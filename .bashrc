@@ -125,6 +125,10 @@ function gitpush() {
 	sudo git push
 }
 
+function ripmp3() {
+  youtube-dl --extract-audio --audio-format mp3 $1
+}
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "${method}"="lwp-request -m '${method}'"
