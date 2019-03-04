@@ -112,6 +112,18 @@ function decryptdir() {
 	rm -rf target.tar.gz
 }
 
+function gitpull() {
+	cd ~/dotfiles/
+	sudo git pull
+	cd ~
+}
+
+function gitpush() {
+	cd ~/dotfiles/
+	sudo git add .
+	sudo git commit -m "$1"
+	sudo git push
+}
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
