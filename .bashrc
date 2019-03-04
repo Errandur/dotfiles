@@ -82,7 +82,7 @@ function uarchive() {
 }
 
 function encrypt() {
-	gpg -c $1 > target.gpg
+	gpg -c $1
 }
 
 function shencrypt() {
