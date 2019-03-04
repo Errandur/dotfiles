@@ -48,6 +48,7 @@ alias open='xdg-open'
 alias install="sudo apt -y install"
 alias power='shutdown now'
 alias sleep='systemctl suspend'
+alias resNet='systemctl restart NetworkManager'
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -71,6 +72,46 @@ alias update='sudo apt -y update && sudo apt -y upgrade'
 
 # Funtions 
 cs(){ cd "$@" && ls -lh; }
+
+function archive() {
+	tar czf target.tar.gz $1
+}
+
+function uarchive() {
+	tar xzf $1
+}
+
+function encrypt() {
+	gpg -c $1 > target.gpg
+}
+
+function shencrypt() {
+	gpg -c $1
+	shred -u $1
+}
+
+function decrypt() {
+	gpg -d $1 > _unencrypted_target
+}
+
+function shedecrypt() {
+	gpg -d $1 > target;
+	shred -u $1
+}
+
+function encryptdir() {
+	tar czf target.tar.gz $1;
+	rm -rf $1
+	gpg -c target.tar.gz
+	rm -rf target.tar.gz
+}
+
+function decryptdir() {
+	gpg -d $1 > target.tar.gz;
+	tar xzf target.tar.gz
+	rm -rf target.tar.gz
+}
+
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
