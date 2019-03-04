@@ -48,7 +48,7 @@ alias open='xdg-open'
 alias install="sudo apt -y install"
 alias power='shutdown now'
 alias sleep='systemctl suspend'
-alias resNet='systemctl restart NetworkManager'
+alias resetnetwork='systemctl restart NetworkManager'
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
