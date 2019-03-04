@@ -1,5 +1,3 @@
-
-
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 # Export Editor
@@ -51,6 +49,7 @@ alias install="sudo apt -y install"
 alias power='shutdown now'
 alias sleep='systemctl suspend'
 alias resetnetwork='systemctl restart NetworkManager'
+alias setdns='sudo echo "nameserver 1.1.1.1" > /etc/resolv.conf'
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -126,6 +125,7 @@ function gitpush() {
 	sudo git commit -m "$1"
 	sudo git push
 }
+
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
