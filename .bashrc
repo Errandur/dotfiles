@@ -69,10 +69,17 @@ alias ls="command ls ${colorflag}"
 # Always enable colored `grep` output
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-alias update='sudo apt -y update && sudo apt -y upgrade'
+# alias update='sudo apt -y update && sudo apt -y upgrade'
 
 # Funtions 
-cs(){ cd "$@" && ls -lh; }
+function cs(){ 
+	cd "$@" && ls -lh; 
+}
+
+function update() {
+	sudo apt -y update;
+	sudo apt -y upgrade
+}
 
 function archive() {
 	tar czf target.tar.gz $1
