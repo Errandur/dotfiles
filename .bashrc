@@ -1,3 +1,4 @@
+
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 # Export Editor
@@ -33,15 +34,8 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias ws="cd ~/oop3rdsem"
-alias g="git"
-alias ga="git add ."
-alias gc="git commit -m 'DEFAULT'"
-alias gl="git pull"
-alias gs="git push"
 alias power='shutdown now'
 alias updatedot='cd ~/dotfiles; git add .; git commit -m "Updated via Alias"; git push'
 alias open='xdg-open'
