@@ -37,12 +37,11 @@ alias -- -="cd -"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias power='shutdown now'
-alias updatedot='cd ~/dotfiles; git add .; git commit -m "Updated via Alias"; git push'
 alias open='xdg-open'
 alias install="sudo apt -y install"
 alias power='shutdown now'
 alias sleep='systemctl suspend'
-alias resetnetwork='systemctl restart NetworkManager'
+alias ResetNetwork='systemctl restart NetworkManager'
 alias setdns='sudo echo "nameserver 1.1.1.1" > /etc/resolv.conf'
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
