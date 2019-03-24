@@ -7,3 +7,4 @@ git clone https://github.com/Errandur/dotfiles ~/
 sudo echo "source ~/dotfiles/.bashrc" > ~/.bashrc
 ```
 ---
+:thumbsup:
