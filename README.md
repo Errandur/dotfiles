@@ -1,7 +1,3 @@
-% Testing
-% Errandur
-% 23-03-19
-
 # Errandur's Dotfile Configuration
 [Repository](https://github.com/Errandur/dotfiles)
 
