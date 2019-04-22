@@ -44,10 +44,9 @@ alias dt="cd ~/Desktop"
 alias power='shutdown now'
 alias open='xdg-open'
 alias install="sudo apt -y install"
-alias power='shutdown now'
 alias sleep='systemctl suspend'
-alias ResetNetwork='systemctl restart NetworkManager'
-alias setdns='sudo echo "nameserver 1.1.1.1" > /etc/resolv.conf'
+alias resnet'systemctl restart NetworkManager'
+alias setdns='chown eri /etc/resolv.conf; echo "nameserver 1.1.1.1" > /etc/resolv.conf'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -93,7 +92,7 @@ function encrypt() {
 	gpg -c $1
 }
 
-function shencrypt() {
+function dencrypt() {
 	gpg -c $1
 	shred -u $1
 }
@@ -113,6 +112,14 @@ function encryptdir() {
 	gpg -c target.tar.gz
 	rm -rf target.tar.gz
 }
+
+function dircrypt() { 
+	tar czf target.tar.gz $1;
+	rm -rf $1
+	gpg -c target.tar.gz
+	rm -rf target.tar.gz
+}
+
 
 function decryptdir() {
 	gpg -d $1 > target.tar.gz;
