@@ -1,4 +1,3 @@
-
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 # Export Editor
@@ -11,21 +10,26 @@ shopt -s nocaseglob;
 shopt -s histappend;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
 for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
+
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
 	complete -o default -o nospace -F _git g;
 fi;
+
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
 # Add tab completion for `defaults read|write NSGlobalDomain`
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults;
+
 ### Easier navigation
 alias ..="cd .."
 alias ...="cd ../.."
@@ -33,6 +37,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
@@ -43,6 +48,7 @@ alias power='shutdown now'
 alias sleep='systemctl suspend'
 alias ResetNetwork='systemctl restart NetworkManager'
 alias setdns='sudo echo "nameserver 1.1.1.1" > /etc/resolv.conf'
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -51,6 +57,7 @@ else # macOS `ls`
 	colorflag="-G"
 	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
+
 # List all files colorized in long format
 alias l="ls -lhF ${colorflag}"
 # List all files colorized in long format, including dot files
@@ -113,35 +120,19 @@ function decryptdir() {
 	rm -rf target.tar.gz
 }
 
-function gitpull() {
+function dotpull() {
 	cd ~/dotfiles/
 	sudo git pull
 	cd ~
 }
 
-function gitpush() {
+function dotpush() {
 	cd ~/dotfiles/
 	sudo git add .
 	sudo git commit -m "$1"
 	sudo git push
 }
 
-
-# One of @janmoesen’s ProTip™s
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "${method}"="lwp-request -m '${method}'"
-done
-command -v grunt > /dev/null && alias grunt="grunt --stack"
-
-# Reload the shell (i.e. invoke as a login shell)
-alias reload="exec ${SHELL} -l"
-
-# Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
-
-# Backups
-alias backup='~/backup/backup.sh'
-alias backupk='~/backup/kodora.sh'
 #!/usr/bin/env bash
 
 # Shell prompt based on the Solarized Dark theme.
@@ -240,12 +231,14 @@ if [[ "${USER}" == "root" ]]; then
 else
 	userStyle="${green}";
 fi;
+
 # Highlight the hostname when connected via SSH.
 if [[ "${SSH_TTY}" ]]; then
 	hostStyle="${bold}${red}";
 else
 	hostStyle="${magenta}";
 fi;
+
 # Set the terminal title and prompt.
 # PS1="\[\033]0;\W\007\]"; # working directory base name
 PS1="\n\[${green}\]┌[\[${userStyle}\]\u";
