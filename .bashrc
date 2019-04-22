@@ -36,12 +36,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd ~; clear"
+alias cdc="cd ~; clear"
 
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias power='shutdown now'
+alias pwr='poweroff'
 alias open='xdg-open'
 alias install="sudo apt -y install"
 alias sleep='systemctl suspend'
