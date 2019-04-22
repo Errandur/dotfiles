@@ -45,8 +45,7 @@ alias power='shutdown now'
 alias open='xdg-open'
 alias install="sudo apt -y install"
 alias sleep='systemctl suspend'
-alias resnet'systemctl restart NetworkManager'
-alias setdns='chown eri /etc/resolv.conf; echo "nameserver 1.1.1.1" > /etc/resolv.conf'
+alias setdns='sudo bash ~/udns.sh'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
