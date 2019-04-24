@@ -45,7 +45,7 @@ alias pwr='poweroff'
 alias open='xdg-open'
 alias install="sudo apt -y install"
 alias sleep='systemctl suspend'
-alias setdns='sudo bash ~/udns.sh'
+alias run='sudo bash'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -66,7 +66,7 @@ alias ll="ls -alh ${colorflag}"
 alias ls="command ls ${colorflag}"
 # Always enable colored `grep` output
 # Enable aliases to be sudo’ed
-alias sudo='sudo '
+alias sudo='sudo'
 # alias update='sudo apt -y update && sudo apt -y upgrade'
 
 # Funtions 
@@ -137,6 +137,11 @@ function dotpush() {
 	sudo git add .
 	sudo git commit -m "$1"
 	sudo git push
+}
+
+function udns() {
+	sudo echo 'nameserver 1.1.1.1' > /etc/resolv.conf
+	cat /etc/resolv.conf
 }
 
 #!/usr/bin/env bash
