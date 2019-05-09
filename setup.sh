@@ -48,6 +48,9 @@ fi
 ### RESOURCE BASHRC ###
 echo "source ~/dotfiles/.bashrc" > ~/.bashrc
 
+## INSTALL VIM ###
+sudo apt -y install vim
+
 ### INSTALL RANGER ###
 sudo apt install -y ranger
 
