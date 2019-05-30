@@ -46,6 +46,7 @@ alias open='xdg-open'
 alias install="sudo apt -y install"
 alias sleep='systemctl suspend'
 alias run='sudo bash'
+alias apt-get='sudo apt-get'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
