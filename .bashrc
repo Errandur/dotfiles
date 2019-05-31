@@ -92,7 +92,7 @@ function encrypt() {
 	gpg -c $1
 }
 
-function dencrypt() {
+function dedcrypt() {
 	gpg -c $1
 	shred -u $1
 }
@@ -101,7 +101,7 @@ function decrypt() {
 	gpg -d $1 > _unencrypted_target
 }
 
-function shedecrypt() {
+function shedcrypt() {
 	gpg -d $1 > target;
 	shred -u $1
 }
@@ -122,6 +122,12 @@ function dircrypt() {
 
 
 function decryptdir() {
+	gpg -d $1 > target.tar.gz;
+	tar xzf target.tar.gz
+	rm -rf target.tar.gz
+}
+
+function dedircrypt() {
 	gpg -d $1 > target.tar.gz;
 	tar xzf target.tar.gz
 	rm -rf target.tar.gz
