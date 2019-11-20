@@ -65,6 +65,8 @@ sudo apt install -y tmux
 ### RESOURCE TMUX CONFIG ###
 echo "source ~/dotfiles/.tmux.conf" > ~/.tmux.conf
 
+echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
+
 source .bashrc
 
 ### COMPLETION MESSAGE ###
