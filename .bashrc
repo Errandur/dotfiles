@@ -44,6 +44,7 @@ alias dt="cd ~/Desktop"
 alias pwr='poweroff'
 alias open='xdg-open'
 alias install="sudo apt -y install"
+alias update="sudo apt -y update; sudo apt -y upgrade"
 alias sleep='systemctl suspend'
 alias run='sudo bash'
 alias apt-get='sudo apt-get'
