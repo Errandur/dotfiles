@@ -72,47 +72,58 @@ alias sudo='sudo';
 # Single comman to update and upgrade debian
 alias update='sudo apt -y update && sudo apt -y upgrade';
 
-# Shell Customization
-#####################
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; 
-then
-export TERM='gnome-256color';
+# Shell Colors
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+	export TERM='gnome-256color';
 elif infocmp xterm-256color >/dev/null 2>&1; then
-export TERM='xterm-256color';
+	export TERM='xterm-256color';
 fi;
-
-# Colors
-# tput sgr0; # reset colors
-# bold=$(tput bold);
-# reset=$(tput sgr0);
-# black=$(tput setaf 0);
-# blue=$(tput setaf 33);
-# cyan=$(tput setaf 37);
-# green=$(tput setaf 40);
-orange=$(tput setaf 202);
-# magenta=$(tput setaf 13);
-# purple=$(tput setaf 125);
-# red=$(tput setaf 124);
-# violet=$(tput setaf 61);
-# white=$(tput setaf 15);
-# yellow=$(tput setaf 226);
-
-# bold='';
-# reset="\e[0m";
-# black="\e[1;30m";
-# blue="\e[1;34m";
-# cyan="\e[1;36m";
-green="\e[1;32m";
-# magenta="\e[0;49m";
-# purple="\e[1;35m";
-# red="\e[1;31m";
-# violet="\e[1;35m";
-white="\e[1;37m";
-# yellow="\e[1;33m";
+if tput setaf 1 &> /dev/null; then
+	tput sgr0; # reset colors
+	bold=$(tput bold);
+	reset=$(tput sgr0);
+	# Solarized colors, taken from http://git.io/solarized-colors.
+	black=$(tput setaf 0);
+	blue=$(tput setaf 33);
+	cyan=$(tput setaf 37);
+	green=$(tput setaf 40);
+	orange=$(tput setaf 202);
+	magenta=$(tput setaf 13);
+	purple=$(tput setaf 125);
+	red=$(tput setaf 124);
+	violet=$(tput setaf 61);
+	white=$(tput setaf 15);
+	yellow=$(tput setaf 226);
+else
+	bold='';
+	reset="\e[0m";
+	black="\e[1;30m";
+	blue="\e[1;34m";
+	cyan="\e[1;36m";
+	green="\e[1;32m";
+	magenta="\e[0;49m";
+	purple="\e[1;35m";
+	red="\e[1;31m";
+	violet="\e[1;35m";
+	white="\e[1;37m";
+	yellow="\e[1;33m";
+fi;
+# Highlight the user name when logged in as root.
+if [[ "${USER}" == "root" ]]; then
+	userStyle="${red}";
+else
+	userStyle="${green}";
+fi;
+# Highlight the hostname when connected via SSH.
+if [[ "${SSH_TTY}" ]]; then
+	hostStyle="${bold}${red}";
+else
+	hostStyle="${magenta}";
+fi;
 
 # Set the terminal title and prompt.
 # PS1="\[\033]0;\W\007\]"; # working directory base name
-PS1="\n\[${green}\]┌[\[${green}\]\u";
+PS1="\n\[${green}\]┌[\[${userStyle}\]\u";
 PS1+="\[${white}\]@\[$(tput setaf 45)\]\h";
 PS1+="\[${green}\]]";
 PS1+="\[${orange}\][\w]\n\[${green}\]└╼  ";
