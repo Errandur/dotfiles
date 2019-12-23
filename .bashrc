@@ -21,7 +21,6 @@ alias apt-get='sudo apt-get'
 
 # Funtions 
 ##########
-function cs() {cd "$@" && ls -lh}
 function update() {sudo apt -y update; sudo apt -y upgrade}
 function archive() {tar czf target.tar.gz $1}
 function uarchive() {tar xzf $1}
