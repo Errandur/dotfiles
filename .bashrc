@@ -21,19 +21,20 @@ alias apt-get='sudo apt-get'
 
 # Funtions 
 ##########
-function update() {sudo apt -y update; sudo apt -y upgrade}
-function archive() {tar czf target.tar.gz $1}
-function uarchive() {tar xzf $1}
-function encrypt() {gpg -c $1}
-function dedcrypt() {gpg -c $1shred -u $1}
-function decrypt() {gpg -d $1 > _unencrypted_target}
-function shedcrypt() {gpg -d $1 > target; shred -u $1}
-function encryptdir() {tar czf target.tar.gz $1; rm -rf $1; gpg -c target.tar.gz; rm -rf target.tar.gz}
-function dircrypt() {tar czf target.tar.gz $1; rm -rf $1; gpg -c target.tar.gz; rm -rf target.tar.gz}
-function decryptdir() {gpg -d $1 > target.tar.gz; tar xzf target.tar.gz; rm -rf target.tar.gz}
-function dedircrypt() {gpg -d $1 > target.tar.gz; tar xzf target.tar.gz; rm -rf target.tar.gz}
-function dotpull() {cd ~/dotfiles/; sudo git pull; cd ~}
-function dotpush() {cd ~/dotfiles/; sudo git add .; sudo git commit -m "$1"; sudo git push}
+function cs() { cd $@ && ls -alh }
+function update() { sudo apt -y update; sudo apt -y upgrade }
+function archive() { tar czf target.tar.gz $1 }
+function uarchive() { tar xzf $1 }
+function encrypt() { gpg -c $1 }
+function dedcrypt() { gpg -c $1shred -u $1 }
+function decrypt() { gpg -d $1 > _unencrypted_target }
+function shedcrypt() { gpg -d $1 > target; shred -u $1 }
+function encryptdir() { tar czf target.tar.gz $1; rm -rf $1; gpg -c target.tar.gz; rm -rf target.tar.gz }
+function dircrypt() { tar czf target.tar.gz $1; rm -rf $1; gpg -c target.tar.gz; rm -rf target.tar.gz }
+function decryptdir() { gpg -d $1 > target.tar.gz; tar xzf target.tar.gz; rm -rf target.tar.gz }
+function dedircrypt() { gpg -d $1 > target.tar.gz; tar xzf target.tar.gz; rm -rf target.tar.gz }
+function dotpull() { cd ~/dotfiles/; sudo git pull; cd ~ }
+function dotpush() { cd ~/dotfiles/; sudo git add .; sudo git commit -m "$1"; sudo git push }
 
 # Misc Options
 ##############
@@ -49,10 +50,6 @@ shopt -s nocaseglob;
 shopt -s histappend;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-# Enable some Bash 4 features when possible
-for option in autocd globstar; do shopt -s "$option" 2> /dev/null; done;
-# Enable tab completion for `g` by marking it as an alias for `git`
-if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then complete -o default -o nospace -F _git g; fi;
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 # You could just use `-g` instead, but I like being explicit
@@ -60,14 +57,6 @@ complete -W "NSGlobalDomain" defaults;
 
 # Console Customization
 #######################
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-colorflag="--color"
-export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-else # macOS `ls`
-colorflag="-G"
-export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-fi
 # List all files colorized in long format
 alias l="ls -lhF ${colorflag}"
 # List all files colorized in long format, including dot files
@@ -78,11 +67,10 @@ alias ll="ls -alh ${colorflag}"
 alias ls="command ls ${colorflag}"
 # List Dir - Long View
 alias lsl='ls -l'
-# Always enable colored `grep` output
 # Enable aliases to be sudo’ed
 alias sudo='sudo'
 # alias update='sudo apt -y update && sudo apt -y upgrade'
-#!/usr/bin/env bash
+
 # Shell Customization
 #####################
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
@@ -94,7 +82,6 @@ if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
 	reset=$(tput sgr0);
-	# Solarized colors, taken from http://git.io/solarized-colors.
 	black=$(tput setaf 0);
 	blue=$(tput setaf 33);
 	cyan=$(tput setaf 37);
@@ -120,18 +107,6 @@ else
 	white="\e[1;37m";
 	yellow="\e[1;33m";
 fi;
-# Highlight the user name when logged in as root.
-if [[ "${USER}" == "root" ]]; then
-	userStyle="${red}";
-else
-	userStyle="${green}";
-fi;
-# Highlight the hostname when connected via SSH.
-if [[ "${SSH_TTY}" ]]; then
-	hostStyle="${bold}${red}";
-else
-	hostStyle="${magenta}";
-fi;
 
 # Set the terminal title and prompt.
 # PS1="\[\033]0;\W\007\]"; # working directory base name
@@ -150,5 +125,6 @@ PS1+="";
 # PS1+="\n";
 PS1+="\[${yellow}\]# \[${reset}\]"; # `$` (and reset color)
 export PS1;
+
 PS2="\[${yellow}\]→ \[${reset}\]";
 export PS2;
