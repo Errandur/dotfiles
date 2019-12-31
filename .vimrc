@@ -1,5 +1,7 @@
 set background=dark
 colorscheme elflord
+inoremap ii <Esc>
+cnoremap ii <Esc>
 
 " Make Vim more useful
 set nocompatible

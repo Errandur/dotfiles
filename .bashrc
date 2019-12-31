@@ -21,6 +21,7 @@ alias sleep='systemctl suspend'
 alias run='sudo bash'
 alias apt='sudo apt-get'
 alias update='sudo apt -y update && sudo apt -y upgrade';
+alias vimbash='sudo vim ~/dotfiles/.bashrc'
 
 # Funtions 
 ##########
