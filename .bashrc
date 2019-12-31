@@ -53,16 +53,3 @@ shopt -s nocaseglob;
 shopt -s histappend;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
-
-# Custom Console
-################
-# PS1="\[\033]0;\W\007\]"; # working directory base name
-PS1="\n\[${green}\]┌[\[${userStyle}\]\u";
-PS1+="\[${white}\]@\[$(tput setaf 45)\]\h";
-PS1+="\[${green}\]]";
-PS1+="\[${orange}\][\w]\n\[${green}\]└╼  ";
-PS1+="";
-PS1+="\[${yellow}\]# \[${reset}\]"; # `$` (and reset color)
-export PS1;
-PS2="\[${yellow}\]→ \[${reset}\]";
-export PS2;
