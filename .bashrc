@@ -26,7 +26,7 @@ function update() { sudo apt -y update; sudo apt -y upgrade; }
 function archive() { tar czf target.tar.gz $1; }
 function uarchive() { tar xzf $1; }
 function encrypt() { gpg -c $1; }
-function dedcrypt() { gpg -c $1shred -u $1; }
+function dedcrypt() { gpg -d $1shred -u $1; }
 function decrypt() { gpg -d $1 > _unencrypted_target; }
 function shedcrypt() { gpg -d $1 > target; shred -u $1; }
 function encryptdir() { tar czf target.tar.gz $1; rm -rf $1; gpg -c target.tar.gz; rm -rf target.tar.gz; }
