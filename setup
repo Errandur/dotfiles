@@ -45,9 +45,6 @@ if [ ! -d ~/dotfiles ]; then
   	updateSkip;
 fi
 
-### RESOURCE BASHRC ###
-echo "source ~/dotfiles/.bashrc" > ~/.bashrc
-
 ## INSTALL VIM ###
 sudo apt -y install vim
 
@@ -65,9 +62,8 @@ sudo apt install -y tmux
 ### RESOURCE TMUX CONFIG ###
 echo "source ~/dotfiles/.tmux.conf" > ~/.tmux.conf
 
-echo 'source ~/dotfiles/.bashrc' > ~/.bashrc
-
-source .bashrc
+### RESOURCE BASHRC ###
+echo "source ~/dotfiles/.bashrc" > ~/.bashrc
 
 ### COMPLETION MESSAGE ###
 clear
